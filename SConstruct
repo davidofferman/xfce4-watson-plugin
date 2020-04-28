@@ -24,7 +24,6 @@ CFLAGS_WARNING = " ".join([
 
 # SConstruct Environments
 env = Environment()
-env.Append(CFLAGS = "-g")
 env.Append(LINKFLAGS = "-std=c99 -ansi")
 env.Append(CFLAGS = CFLAGS_WARNING)
 env.Append(CFLAGS = "-isystem third-party")
