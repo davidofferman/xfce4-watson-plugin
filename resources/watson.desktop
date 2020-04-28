@@ -1,0 +1,10 @@
+[Xfce Panel]
+Type=X-XFCE-PanelPlugin
+Encoding=UTF-8
+Name=Watson Plugin
+Comment=Watson plugin for the Xfce panel
+Icon=xfce4-watson-plugin
+X-XFCE-Module=watson
+X-XFCE-Internal=false
+X-XFCE-Unique=false
+X-XFCE-API=2.0

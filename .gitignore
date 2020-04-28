@@ -1,0 +1,9 @@
+# SCons Files
+.sconsign.dblite
+config.log
+.sconf_temp
+
+# C Files
+*.so
+*.os
+*.o
