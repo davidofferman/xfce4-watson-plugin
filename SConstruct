@@ -31,7 +31,7 @@ env.ParseConfig("pkg-config --cflags --libs libxfce4panel-2.0 libxfce4ui-2")
 
 # Command Line Variables
 opts = Variables("xfce4-watson-plugin.conf", ARGUMENTS)
-opts.Add(PathVariable("PREFIX", "Directory to install under", "/usr/local", PathVariable.PathIsDir))
+opts.Add(PathVariable("PREFIX", "Directory to install under", "/usr", PathVariable.PathIsDir))
 opts.Update(env)
 
 # Help Text
@@ -41,6 +41,7 @@ Help(opts.GenerateHelpText(env))
 idir_prefix = '${PREFIX}'
 idir_data   = "${PREFIX}/share"
 idir_lib    = "${PREFIX}/lib"
+idir_icon   = "${PREFIX}/local/share"
 
 wdir_data = os.path.join(idir_data, "xfce4", "watson")
 
@@ -67,13 +68,13 @@ for icon in Glob("#resources/icons/*/*", strings=True):
 	index_hi = icon.rfind("/")
 	icon_size = icon[index_lo:index_hi]
 	icon_name = icon[index_hi+1:]
-	dest = os.path.join(idir_data, "icons", "hicolor", icon_size, "apps", icon_name)
+	dest = os.path.join(idir_icon, "icons", "hicolor", icon_size, "apps", icon_name)
 
 	env.InstallAs(dest, icon)
 
 	env.AddPostAction(
 		dest,
-		"gtk-update-icon-cache -f -t " + os.path.join(idir_data, "icons", "hicolor"))
+		"gtk-update-icon-cache -f -t " + os.path.join(idir_icon, "icons", "hicolor"))
 
 env.Alias("install", idir_prefix)
 
